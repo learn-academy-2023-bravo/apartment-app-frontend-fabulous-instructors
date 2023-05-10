@@ -6,7 +6,7 @@ const mockApartments = [
     city: 'San Francisco',
     state: 'CA',
     square_footage: 600,
-    price: '1500',
+    price: '2000',
     bedrooms: 1,
     bathrooms: 1,
     pets: 'yes',

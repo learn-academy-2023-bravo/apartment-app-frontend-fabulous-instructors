@@ -4,11 +4,10 @@ import { Card, CardImg, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 const ApartmentShow = ({apartments, current_user, deleteApartment}) => {
-    console.log(current_user.id)
     const { id } = useParams()
   
   const currentApartment = apartments?.find((apartment) => apartment.id === +id)
-
+  console.log("current apartment: ", currentApartment)
   return (
     <>
     <div className="apartments-body">
@@ -23,21 +22,6 @@ const ApartmentShow = ({apartments, current_user, deleteApartment}) => {
                 <CardSubtitle>{currentApartment.bedrooms} Bedroom {currentApartment.bathrooms}, Bath</CardSubtitle>
                 <CardSubtitle>Pets: {currentApartment.pets}</CardSubtitle>
               </div>
-            
-              {current_user.id === currentApartment.user_id &&
-                  <div className="show-button">            
-                  <NavLink to={`/apartmentedit/${currentApartment.id}`} className="nav-link edit-listing">
-                    <Button className="apartment-button">
-                        Edit Listing
-                    </Button>
-                  </NavLink>
-                  <NavLink to={`/myapartments`} className="nav-link">
-                    <Button onClick={() => deleteApartment(currentApartment.id)} className="apartment-button">
-                        Delete Listing
-                    </Button>
-                  </NavLink>
-                </div>     
-              }
             </div>
           </CardBody>
         </Card>

@@ -18,3 +18,9 @@
   height: 90vh;
  
 }
+
+.welcome-title {
+  text-align: center;
+  padding-top: 100px;
+  color: green;
+}
