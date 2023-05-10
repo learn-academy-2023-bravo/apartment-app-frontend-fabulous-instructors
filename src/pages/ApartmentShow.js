@@ -3,7 +3,7 @@ import { NavLink, useParams } from "react-router-dom"
 import { Card, CardImg, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 
-const ApartmentShow = ({apartments, current_user, deleteApartment}) => {
+const ApartmentShow = ({apartments}) => {
     const { id } = useParams()
   
   const currentApartment = apartments?.find((apartment) => apartment.id === +id)
