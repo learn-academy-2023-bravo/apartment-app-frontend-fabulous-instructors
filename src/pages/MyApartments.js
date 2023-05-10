@@ -1,24 +1,15 @@
-import React from "react"
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-} from "reactstrap"
+import { Card, CardBody, CardTitle, CardSubtitle, Button } from "reactstrap"
 import { NavLink } from "react-router-dom"
 
-const MyApartments = ({ current_user, apartments }) => {
-  console.log('mine: ', current_user)
-  const myApartments = apartments?.filter(
-    (apartment) => current_user?.id === apartment.user_id
-  )
-
-  return (
+const MyApartments = ({ apartments, current_user}) => {
+  // use the filter method to create a new array of apartments belonging to the user by using user_id.
+    const myApartments = apartments?.filter(apartment => current_user?.id === apartment.user_id)
+  return(
     <>
       <div className="apartments-body">
         <h1 className="index-title">Recent Listings</h1>
         <div className="flex-apartments">
+          {/* then map over filtered array to show only user's apartments */}
           {myApartments.map((apartment, index) => {
             return (
               <Card
@@ -31,10 +22,7 @@ const MyApartments = ({ current_user, apartments }) => {
                 <CardBody>
                   <CardTitle tag="h5">${apartment.price}/month</CardTitle>
                   <CardSubtitle>
-                    {apartment.street}, {apartment.city}, {apartment.state}
-                  </CardSubtitle>
-                  <CardSubtitle>
-                    {apartment.bedrooms} Bedroom, {apartment.bathrooms} Bath
+                     {apartment.city}, {apartment.state}
                   </CardSubtitle>
                   <NavLink
                     to={`/apartmentshow/${apartment.id}`}

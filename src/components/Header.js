@@ -2,10 +2,9 @@ import Navigation from "./Navigation"
 
 
 const Header = ({ current_user}) => {
-  console.log('header crnt usr', current_user)
   return(
     <>
-      <Navigation current_user={current_user } />
+      <Navigation current_user={current_user} />
     </>
   )
 }

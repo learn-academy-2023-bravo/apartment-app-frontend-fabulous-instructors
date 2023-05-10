@@ -1,16 +1,15 @@
-import {useNavigate} from "react-router-dom"
 
-const Signup = ({ signup }) => {
-    const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
-        signup()
-        e.target.reset()
-        navigate("/apartmentindex")
+const Signup = () => {
+   
+
+    const handleSubmit = () => {
+       console.log('sign up')
+       
     }
     return(
         <div>
-        <form ronSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             Email: <input type="email" name='email' placeholder="email" />
             <br/>
             Password: <input type="password" name='password' placeholder="password" />

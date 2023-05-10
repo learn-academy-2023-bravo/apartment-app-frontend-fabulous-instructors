@@ -1,14 +1,11 @@
-import {useNavigate} from "react-router-dom"
 
-const Login = ({ login, current_user }) => {
-  
-  const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
-    e.target.reset()
+const Login = () => {
 
-      navigate(`/myapartments`)
+  const handleSubmit = () => {
+    console.log('something')
   }
+  
   return(
     <div>
       <form onSubmit={handleSubmit}>
