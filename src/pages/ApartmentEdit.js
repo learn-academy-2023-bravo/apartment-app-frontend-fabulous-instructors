@@ -1,5 +1,5 @@
 
-const ApartmentEdit = () => {
+const ApartmentEdit = ({apartments}) => {
   return(
     <>
       <h1> Edit Form </h1>

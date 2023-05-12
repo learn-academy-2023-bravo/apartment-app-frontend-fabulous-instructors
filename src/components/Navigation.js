@@ -1,9 +1,9 @@
 import React from "react"
-import { Nav, NavItem } from "reactstrap"
 import { NavLink } from "react-router-dom"
+import { Nav, NavItem } from "reactstrap"
 
 const Navigation = ({ current_user }) => {
-  console.log("nav: ", current_user)
+
   return (
     <>
       <Nav className="nav">
