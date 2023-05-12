@@ -24,3 +24,12 @@
   padding-top: 100px;
   color: green;
 }
+
+.show-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.apartment-text {
+  text-align: center;
+}

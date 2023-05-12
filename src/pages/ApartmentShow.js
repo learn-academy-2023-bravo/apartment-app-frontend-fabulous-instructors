@@ -1,13 +1,11 @@
 import React from "react"
 import { NavLink, useParams } from "react-router-dom"
-import { Card, CardImg, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { Button, Card, CardBody, CardImg, CardSubtitle, CardTitle } from 'reactstrap';
 
 const ApartmentShow = ({apartments}) => {
     const { id } = useParams()
   
   const currentApartment = apartments?.find((apartment) => apartment.id === +id)
-  console.log("current apartment: ", currentApartment)
   return (
     <>
     <div className="apartments-body">
@@ -22,6 +20,21 @@ const ApartmentShow = ({apartments}) => {
                 <CardSubtitle>{currentApartment.bedrooms} Bedroom {currentApartment.bathrooms}, Bath</CardSubtitle>
                 <CardSubtitle>Pets: {currentApartment.pets}</CardSubtitle>
               </div>
+            </div>
+            <div className="show-buttons">
+            <NavLink
+              to={`/apartmentedit/${currentApartment.id}`}
+              className="nav-link"
+            >
+              <Button className="apartment-button">Update Details</Button>
+            </NavLink>
+  
+            <NavLink
+              to={`/`}
+              className="nav-link"
+            >
+              <Button className="apartment-button">Remove</Button>
+            </NavLink>
             </div>
           </CardBody>
         </Card>
