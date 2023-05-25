@@ -1,14 +1,28 @@
+import { useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 
+const Login = ({ login }) => {
 
-const Login = () => {
+  const formRef = useRef()
+  const navigate = useNavigate()
 
-  const handleSubmit = () => {
-    console.log('something')
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const formData = new FormData(formRef.current)
+    const data = Object.fromEntries(formData)
+    const userInfo = {
+        "user": { email: data.email, password: data.password }
+    }
+    console.log(userInfo)
+    login(userInfo)
+    navigate('/')
+    e.target.reset()
+
   }
   
   return(
     <div>
-      <form onSubmit={handleSubmit}>
+      <form ref={formRef} onSubmit={handleSubmit}>
         Email: <input type="email" name='email' placeholder="email" />
         <br/>
         Password: <input type="password" name='password' placeholder="password" />

@@ -6,7 +6,7 @@ import Header from './components/Header'
 import Login from './components/Login'
 import Signup from './components/Signup'
 // import mockUsers from './mockUsers'
-import mockApartments from './mockApartments'
+// import mockApartments from './mockApartments'
 import ApartmentEdit from './pages/ApartmentEdit'
 import ApartmentIndex from './pages/ApartmentIndex'
 import ApartmentNew from './pages/ApartmentNew'
@@ -26,6 +26,32 @@ const App = () => {
   }, [])
   
   const url = "http://localhost:3000"
+
+  // localStorage - has to be strings
+
+
+  const login = (userInfo) => {
+    fetch(`http://localhost:3000/login`, {
+      body: JSON.stringify(userInfo),
+      headers: {
+        "Content-Type": 'application/json',
+        "Accept": 'application/json'
+      },
+      method: 'POST'
+    })
+    .then(response => {
+        if (!response.ok) {
+        throw Error(response.statusText)
+      }
+      //store the token
+      localStorage.setItem("token", response.headers.get("Authorization"))
+      return response.json()
+    })
+    .then(payload => {
+      setCurrentUser(payload)
+    })
+    .catch(error => console.log('login errors: ', error))
+  }
 
   // apartment fetches
   function readApartments() {
@@ -82,7 +108,7 @@ const App = () => {
       <div className="wrapper">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login login={login} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments}/>} />
         <Route path="/apartmentshow/:id" element={<ApartmentShow apartments={apartments} deleteApartment={deleteApartment} />} />

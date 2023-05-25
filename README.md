@@ -105,6 +105,9 @@ Note: Data must be stored as strings. If you need to store objects or arrays, yo
       method: 'POST'
     })
     .then(response => {
+        if (!response.ok) {
+        throw Error(response.statusText)
+      }
     // store the token
     localStorage.setItem("token", response.headers.get("Authorization"))
     return response.json()
@@ -125,6 +128,9 @@ Note: Data must be stored as strings. If you need to store objects or arrays, yo
       method: 'POST'
     })
     .then(response => {
+        if (!response.ok) {
+        throw Error(response.statusText)
+      }
       // store the token
     localStorage.setItem("token", response.headers.get("Authorization"))
     return response.json()
