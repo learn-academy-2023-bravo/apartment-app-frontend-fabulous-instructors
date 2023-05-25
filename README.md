@@ -61,10 +61,13 @@ export default Signup
 Now we need to collect the input and pass the user info.  For this we will use the javascript built-in object `FormData`. It allows you to construct and manipulate HTML form data before sending it to the server.  It provides a way to create key-value pair representation of form fields and their values (like what you send in an HTTP POST request).  We can pass in our `formRef.current` in creating a new FormData, then use Object.fromEntries to get the values.  We will do all in the handleSubmit function:
 ```javascript
  const handleSubmit = (e) => {
-  //stop the default behavior of the form 
+  //stop the default behavior of the form.  We want to send it with fetch.
     e.preventDefault()
+    // store the form entries in a variable
     const formData = new FormData(formRef.current)
+    // create and object from the entries
     const data = Object.fromEntries(formData)
+    // store user's info in format that can be used with jwt.
     const userInfo = {
         "user":{ email: data.email, password: data.password }
     }
